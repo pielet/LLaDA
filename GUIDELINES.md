@@ -21,7 +21,7 @@ The pre-training of LLaDA is straightforward and simple. Starting from an existi
 autoregressive model training code, only a few lines need to be modified. 
 We provide the core code (i.e., loss computation) here.
 
-```angular2html
+```python
 def forward_process(input_ids, eps=1e-3):
     b, l = input_ids.shape
     t = torch.rand(b, device=input_ids.device)
@@ -67,7 +67,7 @@ prompt_lengths:
 
 After preprocessing the SFT data, we can obtain the SFT code by making simple modifications to the pre-training code. 
 The key difference from pre-training is that SFT does not add noise to the prompt.
-```angular2html
+```python
 input_ids, prompt_lengths = batch["input_ids"], batch["prompt_lengths"]
 
 noisy_batch, _, p_mask = forward_process(input_ids)
